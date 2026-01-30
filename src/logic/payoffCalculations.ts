@@ -16,6 +16,10 @@ export interface PayoffResult {
     minimumPaymentAmount: number;
     interestSavings: number; // vs minimum payment
     timeSavings: number; // months saved vs minimum
+    // Minimum payment scenario details for comparison
+    minPaymentMonths: number;
+    minPaymentTotalInterest: number;
+    minPaymentTotalPaid: number;
 }
 
 export function calculatePayoff(input: PayoffInput): PayoffResult {
@@ -72,7 +76,10 @@ export function calculatePayoff(input: PayoffInput): PayoffResult {
         yearsToPayoff: monthsToPayoff / 12,
         minimumPaymentAmount,
         interestSavings,
-        timeSavings
+        timeSavings,
+        minPaymentMonths: minPaymentResult.months,
+        minPaymentTotalInterest: minPaymentResult.totalInterest,
+        minPaymentTotalPaid: minPaymentResult.totalPayment
     };
 }
 
